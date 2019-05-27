@@ -1,0 +1,98 @@
+    {
+        "items":[{
+                    "id" : 1,
+                    "name" : "Macbook Air",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "img" : "/img/thumb/air.jpg",
+                    "url" : ""
+                
+            },
+            
+            {
+                    "id" : 2,
+                    "name" : "Dell xps 13",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "img" : "/img/thumb/xps.jpg",
+                    "url" : ""
+                
+            },
+            {
+                    "id" : 3,
+                    "name" : "Lenovo ThinkPad",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "img" : "/img/thumb/thinkpad.jpg",
+                    "url" : ""
+                    
+                
+            },
+            {
+                    "id" : 4,
+                    "name" : "Playstation 4",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "img" : "/img/thumb/ps4.png",
+                    "url" : ""
+                
+            },
+            {
+                    "id" : 5,
+                    "name" : "Microsoft Surface Pro 4",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "img" : "/img/thumb/surfacepro.jpg",
+                    "url" : ""
+                
+            },
+            {
+                    "id" : 6,
+                    "name" : "Microsoft Surface Book 2",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "img" : "/img/thumb/surfacebook2.jpg",
+                    "url" : ""
+                
+            },
+            {
+                    "id" : 7,
+                    "name" : "Google PixelBook",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "img" : "/img/thumb/pixelbook.jpg",
+                    "url" : ""
+                
+            },
+            {
+                    "id" : 8,
+                    "name" : "Google Pixel 2",
+                    "price" : "111",
+                    "categories" : ["abc" , "kkd" , "kdfj"],
+                    "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                    "discount" : "50",
+                    "img" : "/img/thumb/pixel2.png",
+                    "url" : ""
+                
+            }
+            ,{
+                "id" : 9,
+                "name" : "Macbook Pro",
+                "price" : "10000",
+                "categories" : ["abc" , "kkd" , "kdfj"],
+                "description" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio consectetur tempore, quae nihil at dolorum dignissimos ullam unde magni qui harum iusto. Ipsum odio aperiam, nulla accusantium repudiandae omnis sequi quos. Recusandae quia dolore repellendus, ipsum quibusdam quos sunt libero officia provident quisquam aut iusto, magnam voluptatibus at totam voluptates.",
+                "discount" : "60",
+                "img" : "/img/thumb/macbookpro.jpg",
+                "url" : ""
+            
+        }
+        ]
+    
+    }

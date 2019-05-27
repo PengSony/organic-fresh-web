@@ -1,0 +1,22 @@
+{{!-- {{>image-slider}}
+{{>categories-menu}}
+<!-- main content -->
+<main class="main-content">
+  {{>sidebar}}
+  <div class="primary">
+    <div class="wrapper">
+      <h5 class="header">Featured</h5>
+      <div class="prod-container" id="products">  
+          {{#each items}}
+          <div class="item" onclick='location.href="/product/" + {{id}}'>
+            <img src="{{img}}" alt="" class="image">
+            <h4>{{name}}</h6>
+            <p>${{price}}</p>
+          </div>
+          {{/each}}
+      </div>
+    </div>
+  </div>
+
+</main> --}}
+<div id="root"></div>
