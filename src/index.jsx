@@ -8,7 +8,3 @@ ReactDOM.render(
     </div>,
     document.getElementById('root')
 )
-
-    .test{
-    background - color: 'red'
-}
