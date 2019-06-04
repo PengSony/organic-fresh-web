@@ -83,17 +83,14 @@ if ('OPTIONS' == req.method) {
     next()
 }
 })
-
 app.use('/api/v1', router)
+
 app.use(function(req, res) {
     console.log("Error 404");
     res.type('text/html');
     res.status(404);
     res.render('404')
 });
-
-
-
 
 app.listen(3000, function() {
     console.log("App is running on port " + 3000);
