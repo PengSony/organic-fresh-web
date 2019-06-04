@@ -1,18 +1,24 @@
-//include nessesary file
-const models = require('./models/index');
-//const { connectDb } = require('./models/index');
+const express = require('express')
+const path = require('path')
+const mongoose = require('mongoose')
+const logger = require('morgan')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const passport = require('passport')
+const config = require('./app/config/config')
 
-const mongoose = require('mongoose');
+let router = express.Router()
+mongoose.connect(config.database);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+});
 
-const http = require('http');
-const express = require('express');
-const path = require('path');
-const app = express();
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+const app = express()
+const welcome = require('./routes/index.route')
+const users = require('./routes/auth.route')
 
 app.disable('x-powered-by');
-
 //create a defualtLayout in ./views/layout/main.handlebars
 const handlebars = require('express-handlebars').create({ defaultLayout: 'main' });
 app.engine('handlebars', handlebars.engine);
@@ -21,58 +27,89 @@ app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3001);
 app.use(express.static(__dirname + '/public'));
 
+
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
 
-//data
-// var { items } = require('./data/data.json')
+app.use('/', welcome)
 
-//routes
+router.use('/auth', users)
 
-app.get('/', (req, res) => {
-        res.render('index')
-    })
-    // app.use('/about', about)
-    // app.use('/contact', contact)
-    // app.use('/deals', deals)
-    // app.use('/all', all)
-    // app.use('/post', post)
-    // app.use('/product', product)
-    //app.use('/product/:id', product)
+app.all('*', function (req, res, next) {
+/**
+     * Response settings
+     * @type {Object}
+     */
+var responseSettings = {
+    AccessControlAllowOrigin: req.headers.origin,
+    AccessControlAllowHeaders:
+    'Content-Type,X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5,  Date, X-Api-Version, X-File-Name',
+    AccessControlAllowMethods: 'POST, GET, PUT, DELETE, OPTIONS',
+    AccessControlAllowCredentials: true
+}
 
-// app.get('/product/:id', function(request, response, next) {
-//   var id = request.params.id;
-//   response.render('product', {id})
-//   next();
-// }); 
+/**
+     * Headers
+     */
+res.header(
+    'Access-Control-Allow-Credentials',
+    responseSettings.AccessControlAllowCredentials
+)
+res.header(
+    'Access-Control-Allow-Origin',
+    responseSettings.AccessControlAllowOrigin
+)
+res.header(
+    'Access-Control-Allow-Headers',
+    req.headers['access-control-request-headers']
+    ? req.headers['access-control-request-headers']
+    : 'x-requested-with'
+)
+res.header(
+    'Access-Control-Allow-Methods',
+    req.headers['access-control-request-method']
+    ? req.headers['access-control-request-method']
+    : responseSettings.AccessControlAllowMethods
+)
 
-// app.use('/lists', lists)
+if ('OPTIONS' == req.method) {
+    res.sendStatus(200)
+} else {
+    next()
+}
+})
 
-
+app.use('/api/v1', router)
 app.use(function(req, res) {
     console.log("Error 404");
     res.type('text/html');
     res.status(404);
-    res.render('404');
-});
-app.use(function(err, req, res, next) {
-    res.type('text/html');
-    res.status(500);
-    res.render('500');
-    console.log("Error 500");
-
+    res.render('404')
 });
 
 
-// app.listen(app.get('port'), () => {
-//   console.log("listen on port", app.get('port'));
-//   mongoose.connect('mongodb://localhost:27017/organic-fresh', {useNewUrlParser: true});
-// })
 
 
-mongoose.connect('mongodb://localhost:27017/organic-fresh').then(async() => {
-    app.listen(app.get('port'), () => {
-        console.log("listen on port", app.get('port'));
-    })
+app.listen(3000, function() {
+    console.log("App is running on port " + 3000);
 });
+
+app.use(function (req, res, next) {
+  let err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
+
+app.use(passport.initialize())
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500).json({
+    message: err.message
+  })
+})
+
+module.exports = app

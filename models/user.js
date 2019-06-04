@@ -1,27 +1,50 @@
-const mongoose = require('mongoose');
-
-const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
+const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
+const UserSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      lowercase: true,
+      unique: true,
+      required: true
     },
     password: {
-        type: String,
+      type: String,
+      required: true
+    },
+
+  },
+  {
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
     }
-});
-
-userSchema.statics.findByLogin = async function(login) {
-    let user = await this.findOne({
-        username: login,
-    });
-
-    if (!user) {
-        user = await this.findOne({ email: login });
-    }
-
-    return user;
-};
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+  }
+)
+UserSchema.pre('save', function (next) {
+  var user = this
+  if (this.isModified('password') || this.isNew) {
+    bcrypt.genSalt(10, function (err, salt) {
+      if (err) {
+        return next(err)
+      }
+      bcrypt.hash(user.password, salt, function (err, hash) {
+        if (err) {
+          return next(err)
+        }
+        user.password = hash
+        next()
+      })
+    })
+  } else {
+    return next()
+  }
+})
+UserSchema.methods.comparePassword = async function (pw) {
+  return bcrypt.compare(pw, this.password)
+}
+module.exports = mongoose.model('User', UserSchema)
